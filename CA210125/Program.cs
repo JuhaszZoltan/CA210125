@@ -12,6 +12,12 @@ namespace CA210125
         static void Main()
         {
 
+            Szavanna sz = new Szavanna(10, 10);
+
+
+            Console.WriteLine(sz.Megkeres(new Ragadozo()) is null);
+
+            Console.ReadKey();
         }
     }
 }

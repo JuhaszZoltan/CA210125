@@ -21,7 +21,7 @@ namespace CA210125
         }
         abstract public int MaxEletkor { get; set; }
         abstract public int Ehseg { get; set; }
-        public bool El { get; protected set; } = true;
+        public bool El { get; set; } = true;
         //-----------------------
         public void Oregszik()
         {
@@ -30,7 +30,6 @@ namespace CA210125
         }
 
         abstract public bool VanKedveSzaporodni { get; }
-
         abstract public Allat Szaporodik();
         abstract public void Eszik();
     }
