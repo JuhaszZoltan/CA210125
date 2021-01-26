@@ -24,7 +24,7 @@ namespace CA210125
         }
 
 
-        public void Torol(Allat allat, bool megdoglik)
+        public void Torol(Allat allat, bool megdoglik = false)
         {
             var c = Megkeres(allat);
             if (c != null)
@@ -36,7 +36,7 @@ namespace CA210125
 
         public void Athelyez(Allat allat, Cella ujCella)
         {
-            Torol(allat, false);
+            Torol(allat);
             Terulet[ujCella.X, ujCella.Y] = allat;
         }
 
