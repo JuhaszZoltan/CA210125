@@ -21,9 +21,7 @@ namespace CA210125
         }
         abstract public int MaxEletkor { get; set; }
         abstract public int Ehseg { get; set; }
-
         public bool El { get; protected set; } = true;
-        public Szavanna Szavanna { get; set; }
         //-----------------------
         public void Oregszik()
         {
@@ -32,16 +30,8 @@ namespace CA210125
         }
 
         abstract public bool VanKedveSzaporodni { get; }
-        protected bool VanKivel =>
-            Szavanna.KornyezoAllatok(this).Where(a => a.GetType() == this.GetType()).Any();
-        protected bool VanHova =>
-            Szavanna.UresCellak(this).Count != 0;
 
-        abstract public void Szaporodik();
+        abstract public Allat Szaporodik();
         abstract public void Eszik();
-        public void Mozog()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

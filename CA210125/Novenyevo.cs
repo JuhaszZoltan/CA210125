@@ -23,23 +23,14 @@ namespace CA210125
             get => throw new NotImplementedException();
         }
 
-
-        public void Megettek()
-        {
-            El = false;
-        }
-
         public override void Eszik()
         {
             throw new NotImplementedException();
         }
 
-        public override void Szaporodik()
+        public override Allat Szaporodik()
         {
-            if (VanKedveSzaporodni && VanHova && VanKivel)
-            {
-                Szavanna.Elhelyez(new Novenyevo() { Eletkor = 0 } );
-            }
+            return new Novenyevo();
         }
     }
 }

@@ -28,10 +28,9 @@ namespace CA210125
             throw new NotImplementedException();
         }
 
-        public override void Szaporodik()
+        public override Allat Szaporodik()
         {
-            if (VanKedveSzaporodni && VanHova && VanKivel)
-                Szavanna.Elhelyez(new Ragadozo { Eletkor = 0 });
+            throw new NotImplementedException();
         }
     }
 }
