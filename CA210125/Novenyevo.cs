@@ -8,29 +8,24 @@ namespace CA210125
 {
     class Novenyevo : Allat
     {
-        public override int MaxEletkor 
-        { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public override int Ehseg 
-        { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public override bool VanKedveSzaporodni 
-        { 
-            get => throw new NotImplementedException();
+        private int _maxEletkor;
+        public override int MaxEletkor
+        {
+            get => _maxEletkor;
+            set 
+            {
+                if (value > 14) throw new Exception("rossz maxEletkor");
+                _maxEletkor = value;
+            }
         }
 
-        public override void Eszik()
-        {
-            throw new NotImplementedException();
-        }
+        public override bool VanKedveSzaporodni => eveSzaporodott > 1;
+
 
         public override Allat Szaporodik()
         {
-            return new Novenyevo();
+            eveSzaporodott = 0;
+            return new Novenyevo() { Eletkor = 0, };
         }
     }
 }

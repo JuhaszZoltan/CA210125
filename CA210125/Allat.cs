@@ -20,17 +20,22 @@ namespace CA210125
             }
         }
         abstract public int MaxEletkor { get; set; }
-        abstract public int Ehseg { get; set; }
+        public int Ehseg { get; set; } = 0;
         public bool El { get; set; } = true;
         //-----------------------
         public void Oregszik()
         {
             Eletkor++;
+            Ehseg++;
+            if (Ehseg == 2) El = false;
             if (Eletkor == MaxEletkor) El = false;
         }
-
+        public int eveSzaporodott;
         abstract public bool VanKedveSzaporodni { get; }
         abstract public Allat Szaporodik();
-        abstract public void Eszik();
+        public void Eszik()
+        {
+            Ehseg = 0;
+        }
     }
 }

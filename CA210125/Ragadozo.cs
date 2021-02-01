@@ -8,29 +8,26 @@ namespace CA210125
 {
     class Ragadozo : Allat
     {
+
+        private int _maxEletkor;
         public override int MaxEletkor
-        { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public override int Ehseg 
-        { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+        {
+            get => _maxEletkor;
+            set
+            {
+                if (value > 12) throw new Exception("rossz maxEletkor");
+                _maxEletkor = value;
+            }
         }
         public override bool VanKedveSzaporodni 
-        { 
-            get => throw new NotImplementedException();
-        }
-
-        public override void Eszik()
         {
-            throw new NotImplementedException();
+            get => eveSzaporodott > 2 && Ehseg == 0;
         }
 
         public override Allat Szaporodik()
         {
-            throw new NotImplementedException();
+            eveSzaporodott = 0;
+            return new Ragadozo() { Eletkor = 0, };
         }
     }
 }
