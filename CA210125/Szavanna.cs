@@ -22,14 +22,10 @@ namespace CA210125
             }
             return null;
         }
-        public void Torol(Allat allat, bool megdoglik = false)
+        public void Torol(Allat allat)
         {
             var c = Megkeres(allat);
-            if (c != null)
-            {
-                allat.El = !megdoglik;
-                Terulet[c.X, c.Y] = null;
-            }
+            if (c != null) Terulet[c.X, c.Y] = null;
         }
         public void Athelyez(Allat allat, Cella ujCella)
         {
@@ -46,11 +42,11 @@ namespace CA210125
                 var kornyezoAllatok = new List<Allat>();
 
                 for (int x = Math.Max(c.X - 1, 0);
-                    x < Math.Min(c.X + 1, Terulet.GetLength(0));
+                    x <= Math.Min(c.X + 1, Terulet.GetLength(0) -1);
                     x++)
                 {
                     for (int y = Math.Max(c.Y - 1, 0);
-                        y < Math.Min(c.Y + 1, Terulet.GetLength(1));
+                        y <= Math.Min(c.Y + 1, Terulet.GetLength(1) -1);
                         y++)
                     {
                         if (x != c.X && y != c.Y && Terulet[x, y] != null)
@@ -72,11 +68,11 @@ namespace CA210125
                 var kornyezoCellak = new List<Cella>();
 
                 for (int x = Math.Max(c.X - 1, 0);
-                    x < Math.Min(c.X + 1, Terulet.GetLength(0));
+                    x <= Math.Min(c.X + 1, Terulet.GetLength(0) - 1);
                     x++)
                 {
                     for (int y = Math.Max(c.Y - 1, 0);
-                        y < Math.Min(c.Y + 1, Terulet.GetLength(1));
+                        y <= Math.Min(c.Y + 1, Terulet.GetLength(1) -1);
                         y++)
                     {
                         if (x != c.X && y != c.Y && Terulet[x, y] == null)
@@ -108,7 +104,8 @@ namespace CA210125
                         {
                             int i = 0;
                             while (KornyezoAllatok(a)[i] is Ragadozo) i++;
-                            Torol(KornyezoAllatok(a)[i], true);
+                            KornyezoAllatok(a)[i].El = false;
+                            Torol(KornyezoAllatok(a)[i]);
                             a.Eszik();
                         }
                     }
@@ -119,21 +116,15 @@ namespace CA210125
                         Elhelyez(ujAllt, UresCellak(a)[Program.rnd.Next(UresCellak(a).Count)]);
                     }
 
-                    if(UresCellak(a).Count != 0)
+                    if(UresCellak(a) != null && UresCellak(a).Count != 0)
                     {
                         Athelyez(a, UresCellak(a)[Program.rnd.Next(UresCellak(a).Count)]);
                     }
 
                     a.Oregszik();
+                    if (!a.El) Torol(a);
                 }
             }
-
-            foreach (var a in allatok)
-            {
-                if (!a.El) Torol(a, true);
-            }
-
-
         }
         List<Allat> Megkever()
         {

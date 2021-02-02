@@ -17,6 +17,7 @@ namespace CA210125
             {
                 if (value < 0 || value > MaxEletkor)
                     throw new Exception("hibás életkor");
+                _eletkor = value;
             }
         }
         abstract public int MaxEletkor { get; set; }
@@ -25,10 +26,11 @@ namespace CA210125
         //-----------------------
         public void Oregszik()
         {
+            eveSzaporodott++;
             Eletkor++;
             Ehseg++;
-            if (Ehseg == 2) El = false;
-            if (Eletkor == MaxEletkor) El = false;
+            if (Ehseg == 3) El = false;
+            if (Eletkor >= MaxEletkor) El = false;
         }
         public int eveSzaporodott;
         abstract public bool VanKedveSzaporodni { get; }

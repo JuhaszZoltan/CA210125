@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -34,7 +35,7 @@ namespace CA210125
                         int ek = rnd.Next(0, me);
                         szavanna.Elhelyez(new Ragadozo() { MaxEletkor = me, Eletkor = ek }, new Cella(x, y));
                     }
-                    i++;
+                   i++;
                 }
             }
 
@@ -43,7 +44,7 @@ namespace CA210125
             {
                 szavanna.Kirajzol();
                 szavanna.EltelikEgyEv();
-                Thread.Sleep(500);
+                Thread.Sleep(100);
                 Console.Clear();
             }
 
